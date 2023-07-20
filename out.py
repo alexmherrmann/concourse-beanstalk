@@ -45,8 +45,8 @@ if __name__ == "__main__":
     client = boto3.client(
         "elasticbeanstalk",
         region_name=parsed["source"]["region"],
-        aws_access_key_id=parsed["aws_access_key_id"],
-        aws_secret_access_key=parsed["aws_secret_access_key"],
+        aws_access_key_id=parsed['source']["aws_access_key_id"],
+        aws_secret_access_key=parsed['source']["aws_secret_access_key"],
     )
 
     # Get the version from the first "version" file we see in a subdirectory using a glob
