@@ -25,7 +25,7 @@ def create_application_version(
         )
     except ClientError as e:
         if(e.response.get("Code", None) == "InvalidParameterValue"):
-            print("Application version already exists, continuing...")
+            print("Application version already exists, continuing...", file=sys.stderr)
         else:
             raise e
 
