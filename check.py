@@ -13,7 +13,7 @@ print(f"input: {stdin}", file=sys.stderr)
 
 # Get stdin["version"] if it exists, otherwise use "1"
 version = stdin.get("version", {"ref": "1"})
-output = json.dumps({"version": [version]})
+output = json.dumps([version])
 print(f"output: {output}", file=sys.stderr)
 
 print(output)
