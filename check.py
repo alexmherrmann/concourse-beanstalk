@@ -15,3 +15,5 @@ print(f"input: {stdin}", file=sys.stderr)
 version = stdin.get("version", [{"ref": "1"}])
 output = json.dumps({"version": version})
 print(f"output: {output}", file=sys.stderr)
+
+print(output)
