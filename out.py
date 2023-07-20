@@ -5,6 +5,7 @@ import json
 import os
 import sys
 import boto3
+from botocore.exceptions import ClientError
 import mypy_boto3_elasticbeanstalk as elasticbeanstalk
 
 
@@ -16,11 +17,17 @@ def create_application_version(
     s3_bucket,
     s3_key,
 ):
-    client.create_application_version(
-        ApplicationName=application_name,
-        VersionLabel=version_label,
-        SourceBundle={"S3Bucket": s3_bucket, "S3Key": s3_key},
-    )
+    try:
+        client.create_application_version(
+            ApplicationName=application_name,
+            VersionLabel=version_label,
+            SourceBundle={"S3Bucket": s3_bucket, "S3Key": s3_key},
+        )
+    except ClientError as e:
+        if(e.response.get("Code", None) == "InvalidParameterValue"):
+            print("Application version already exists, continuing...")
+        else:
+            raise e
 
 
 if __name__ == "__main__":
@@ -74,5 +81,5 @@ if __name__ == "__main__":
         parsed["params"]["s3_bucket"],
         s3_key=s3key,
     )
-    
+
     print(json.dumps({"version": {"ref": f"msai-{version}"}}))
