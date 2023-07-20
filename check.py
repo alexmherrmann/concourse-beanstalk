@@ -13,4 +13,4 @@ print(stdin, file=sys.stderr)
 
 # Get stdin["version"] if it exists, otherwise use "1"
 version = stdin.get("version", {"ref": "1"})
-print(json.dumps({"version": stdin["version"]}))
+print(json.dumps({"version": version}))
