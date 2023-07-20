@@ -35,7 +35,8 @@ if __name__ == "__main__":
     for root, dirs, files in os.walk("."):
         # Print the file as a full path
         for file in files:
-            print(os.path.join(root, file), file=sys.stderr)
+            content = open(os.path.join(root, file)).read()
+            print(f"{os.path.join(root, file)}: {content}", file=sys.stderr)
         # Print the directory as a full path
         for dir in dirs:
             print(os.path.join(root, dir), file=sys.stderr)
