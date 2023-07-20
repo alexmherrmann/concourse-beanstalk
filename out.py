@@ -56,8 +56,8 @@ if __name__ == "__main__":
     # Get the s3 url from the first "url" file we see in a subdirectory using a glob
     s3url = open(glob.glob("*/url", recursive=False)[0]).read().strip()
 
-    # Strip the https:// from the s3 url
-    s3url = s3url.strip("https://")
+    # Remove the initial the https:// from the s3 url
+    s3url = s3url.replace("https://", "")
     # Cut the first two directories from the s3 url, which is domain and the bucket name
     s3key = "/".join(s3url.split("/")[2:])
 
