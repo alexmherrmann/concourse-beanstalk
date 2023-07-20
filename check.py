@@ -9,8 +9,9 @@ print("doing nothing", file=sys.stderr)
 # load stdin as json
 stdin = json.loads(sys.stdin.read())
 
-print(stdin, file=sys.stderr)
+print(f"input: {stdin}", file=sys.stderr)
 
 # Get stdin["version"] if it exists, otherwise use "1"
 version = stdin.get("version", [{"ref": "1"}])
-print(json.dumps({"version": version}))
+output = json.dumps({"version": version})
+print(f"output: {output}", file=sys.stderr)
