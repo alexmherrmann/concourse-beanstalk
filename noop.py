@@ -4,3 +4,4 @@ import sys
 
 
 print("doing nothing", file=sys.stderr)
+print("{}")
