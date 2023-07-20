@@ -2,7 +2,7 @@
 FROM --platform=linux/amd64 alpine:3
 
 # Install jq
-RUN apk add --no-cache jq git aws-cli python3 py3-pip
+RUN apk add --no-cache jq git python3 py3-pip
 
 RUN mkdir /app
 WORKDIR /app
