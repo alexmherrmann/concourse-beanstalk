@@ -28,6 +28,9 @@ if __name__ == "__main__":
     # Print stdin to stderr
     print(f"stdin: {parsed}", file=sys.stderr)
 
+    # Get the first command line argument and change the working directory to it
+    os.chdir(sys.argv[1])
+
     # recurse through all directories in the current directory, printing them to stderr
     for root, dirs, files in os.walk("."):
         # Print the file as a full path
