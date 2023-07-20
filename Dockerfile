@@ -10,6 +10,6 @@ WORKDIR /app
 ADD requirements.txt /app/requirements.txt
 RUN pip3 install -r requirements.txt
 
-ADD noop.py /opt/resource/in
+ADD in.py /opt/resource/in
 ADD out.py /opt/resource/out
-ADD noop.py /opt/resource/check
+ADD check.py /opt/resource/check
