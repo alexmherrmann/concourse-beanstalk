@@ -1,2 +1,3 @@
 # boto 3
 boto3==1.28.6
+mypy_boto3_elasticbeanstalk==1.28.0
