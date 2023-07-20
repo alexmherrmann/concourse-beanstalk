@@ -12,8 +12,8 @@ stdin = json.loads(sys.stdin.read())
 print(f"input: {stdin}", file=sys.stderr)
 
 # Get stdin["version"] if it exists, otherwise use "1"
-version = stdin.get("version", [{"ref": "1"}])
-output = json.dumps({"version": version})
+version = stdin.get("version", {"ref": "1"})
+output = json.dumps({"version": [version]})
 print(f"output: {output}", file=sys.stderr)
 
 print(output)
