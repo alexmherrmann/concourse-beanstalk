@@ -28,7 +28,7 @@ if __name__ == "__main__":
     stdin = sys.stdin.read()
     parsed = json.loads(stdin)
     # Print stdin to stderr
-    print(stdin, file=sys.stderr)
+    print(f"stdin: {parsed}", file=sys.stderr)
     client = boto3.client(
         "elasticbeanstalk",
         region_name=parsed["region"],
