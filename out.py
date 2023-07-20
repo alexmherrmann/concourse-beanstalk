@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 
 import json
+import os
 import sys
 import boto3
-try:
-    import mypy_boto3_elasticbeanstalk as elasticbeanstalk
-except ImportError:
-    pass
+import mypy_boto3_elasticbeanstalk as elasticbeanstalk
 
 
 # Create the application version
@@ -29,6 +27,16 @@ if __name__ == "__main__":
     parsed = json.loads(stdin)
     # Print stdin to stderr
     print(f"stdin: {parsed}", file=sys.stderr)
+
+    # recurse through all directories in the current directory, printing them to stderr
+    for root, dirs, files in os.walk("."):
+        # Print the file as a full path
+        for file in files:
+            print(os.path.join(root, file), file=sys.stderr)
+        # Print the directory as a full path
+        for dir in dirs:
+            print(os.path.join(root, dir), file=sys.stderr)
+        
     client = boto3.client(
         "elasticbeanstalk",
         region_name=parsed["region"],
