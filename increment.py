@@ -11,7 +11,7 @@ version = sys.argv[1]
 [major, minor, patch] = version.split(".")
 
 # increment the patch
-patch = int(patch) + 1
+patch = int(patch.split("-")[0]) + 1
 
 # Print the new version to stdout
 print(f"{major}.{minor}.{patch}")
