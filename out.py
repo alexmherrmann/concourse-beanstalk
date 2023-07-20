@@ -66,12 +66,13 @@ if __name__ == "__main__":
     # Print out our version label and s3 key
     print(f"version: {version} s3key: {s3key}", file=sys.stderr)
     
-    print(json.dumps({"version": {"ref": f"msai-{version}"}}))
     # Create the application version
-    # create_application_version(
-    #     client,
-    #     parsed["application_name"],
-    #     version,
-    #     parsed["s3_bucket"],
-    #     s3_key=s3key,
-    # )
+    create_application_version(
+        client,
+        parsed["params"]["application_name"],
+        version,
+        parsed["params"]["s3_bucket"],
+        s3_key=s3key,
+    )
+    
+    print(json.dumps({"version": {"ref": f"msai-{version}"}}))
