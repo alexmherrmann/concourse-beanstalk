@@ -24,6 +24,8 @@ def create_application_version(
             SourceBundle={"S3Bucket": s3_bucket, "S3Key": s3_key},
         )
     except ClientError as e:
+        # Print the json error message to stderr
+        print(f"Error: {json.dumps(e)}", file=sys.stderr)
         if(e.response.get("Code", None) == "InvalidParameterValue"):
             print("Application version already exists, continuing...", file=sys.stderr)
         else:
