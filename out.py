@@ -26,7 +26,10 @@ def create_application_version(
     except ClientError as e:
         # Print the json error message to stderr
         print(f"Error: {json.dumps(e.response)}", file=sys.stderr)
-        if(e.response.get("Code", None) == "InvalidParameterValue"):
+        if(
+            e.response.get("Error", {}).get("Code", None) == "InvalidParameterValue" and
+            e.response.get("Error", {}).get("Message", "").index("already exists") != -1
+           ):
             print("Application version already exists, continuing...", file=sys.stderr)
         else:
             raise e
