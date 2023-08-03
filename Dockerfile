@@ -3,7 +3,7 @@ FROM --platform=linux/amd64 alpine:3
 
 # Install jq
 RUN apk add --no-cache jq git python3 py3-pip nodejs npm
-
+RUN npm install -g ts-node
 
 RUN mkdir /app
 WORKDIR /app
