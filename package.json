@@ -4,7 +4,8 @@
   "description": "A resource for elastic beanstalk versions",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,8 @@
   },
   "homepage": "https://`github.com/alexmherrmann/concourse-beanstalk#readme",
   "dependencies": {
+    "typescript": "5.1.6",
+    "@types/node": "20.4.6",
     "concourse-node-helper": "~0.2.3",
     "@aws-sdk/client-elastic-beanstalk": "^3.382.0",
     "@aws-sdk/client-s3": "^3.382.0"

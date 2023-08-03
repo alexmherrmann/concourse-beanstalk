@@ -12,10 +12,13 @@ WORKDIR /app
 ADD package.json .
 RUN npm install
 
-ADD *.ts /opt/resource/
+ADD tsconfig.json /app
 
 ADD run.sh /opt/resource/in
 ADD run.sh /opt/resource/out
 ADD run.sh /opt/resource/check
+
+ADD *.ts /app
+RUN npm run build
 
 ENTRYPOINT [ "ts-node-esm" ]
