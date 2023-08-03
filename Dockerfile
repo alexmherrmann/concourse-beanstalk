@@ -12,7 +12,7 @@ WORKDIR /app
 ADD package.json .
 RUN npm install
 
-ADD *.ts /opt/resource
+ADD *.ts /opt/resource/
 
 ADD run.sh /opt/resource/in
 ADD run.sh /opt/resource/out
